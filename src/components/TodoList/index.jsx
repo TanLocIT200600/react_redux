@@ -11,7 +11,6 @@ export default function TodoList() {
   const [priority, setPriority] = useState('Medium');
 
   const todoList = useSelector(todoRemainingSelector);
-  // const searchText = useSelector(searchTextSelector);
 
 
   const dispatch = useDispatch();
@@ -37,7 +36,15 @@ export default function TodoList() {
   return (
     <Row style={{ height: 'calc(100% - 40px)' }}>
       <Col span={24} style={{ height: 'calc(100% - 40px)', overflowY: 'auto' }}>
-        {todoList.map((item, index) => <Todo key={index} name={item.name} prioriry={item.priority} />)}
+        {todoList.map((item, index) => (
+          <Todo
+            key={index}
+            id={item.id}
+            name={item.name}
+            priority={item.priority}
+            completed={item.completed}
+          />
+        ))}
       </Col>
       <Col span={24}>
         <Input.Group style={{ display: 'flex' }} compact>
